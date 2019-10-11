@@ -11,25 +11,7 @@
 |
 */
 
-use App\Events\TaskEvent;
-
 Route::get('/', function () {
+    event(new App\Events\TaskEvent("moaz"));
     return view('welcome');
 });
-//Broadcast::routes(['middleware' => ['auth:api']]);
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-Route::get('/broadcast', function () {
-
-    //event(new TaskEvent('Hello this is task event message'));
-    return view('broadcast');
-})->name('broadcast');
-Route::post('/broadcast', 'HomeController@broadcast')->name('broadcast_post');
-Route::get('/listener', function () {
-
-    return view('listener');
-});
-
